@@ -3,6 +3,7 @@
 (sources
   /doc/
   /api/
+  /programs/shell/
 )
 
 (doc
@@ -14,15 +15,19 @@
     (url https://docs.minersonline.uk/cc/gtmos)
     (source-link https://github.com/ajh123/GTMOS-CC/blob/${commit}/${path}#L${line})
 
-    (head doc/head.html))
+    (head doc/head.html)
+  )
 
   (module-kinds
     (guide Guides)
+    (program Programs)
+    (changelog Changelog)
   )
 
   (library-path
     /api/
-  ))
+  )
+)
 
 (at /
   (linters
@@ -36,7 +41,8 @@
 
     ;; It's useful to name arguments for documentation, so we allow this. It'd
     ;; be good to find a compromise in the future, but this works for now.
-    -var:unused-arg)
+    -var:unused-arg
+  )
 
   (lint
     (bracket-spaces
@@ -44,7 +50,8 @@
       (function-args no-space)
       (parens no-space)
       (table space)
-      (index no-space))
+      (index no-space)
+    )
 
     (allow-clarifying-parens true)
 
@@ -58,4 +65,7 @@
       _HOST
       ;; Ideally we'd pick these up from bios.lua, but illuaminate currently
       ;; isn't smart enough.
-      sleep write printError read rs)))
+      sleep write printError read rs
+    )
+  )
+)

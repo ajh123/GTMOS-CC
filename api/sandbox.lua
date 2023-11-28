@@ -3,9 +3,9 @@ use the GT MOS APIs.
 
 Programs can be ran in a custom environment to ensure saftey.
 
-@module[module] sandbox
+@module[kind=program] sandbox
 ]]
-sandbox = {}
+local sandbox = {}
 
 --- Creates a custom environment.
 --
@@ -20,7 +20,7 @@ function sandbox.makeEnvironment()
         myVariable = 42,
         myFunction = function(x)
             return x * 2
-        end
+        end,
     }
 end
 
@@ -33,7 +33,7 @@ end
 -- > not work in your environment.
 --
 -- @tparam function func The function to wrap.
--- @treturn thread The coroutine from the file.
+-- @treturn table A thread A coroutine from the function.
 -- @since 0.1.0
 -- @see sandbox.makeEnvironment
 function sandbox.makeProgramFunction(func)
@@ -46,8 +46,8 @@ end
 --
 -- The coroutine will be sandboxed inside a custom environment.
 --
--- @tparam path path The absolute path read from.
--- @treturn thread The path coroutine from the files.
+-- @tparam string path The absolute path read from.
+-- @treturn table A coroutine from the file.
 -- @throws If the file path could not be found.
 -- @since 0.1.0
 -- @see sandbox.makeEnvironment
