@@ -3,7 +3,7 @@
 (sources
   /doc/
   /api/
-  /programs/shell/
+  /programs/shell/main.lua
 )
 
 (doc
