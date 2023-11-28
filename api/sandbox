@@ -5,7 +5,7 @@
 ---
 ---Programs will be ran in a custom environment to ensure saftey.
 ---
-------
+------------
 ---@class sandbox
 sandbox = {}
 
@@ -14,7 +14,7 @@ sandbox = {}
 ---The environment can be used to safeley run not trusted programs,
 ---or use custom GT-MOS APIs.
 ---
-------
+------------
 ---@return table environment The virtual environment created.
 function sandbox.makeEnvironment()
     -- Create a custom environment
@@ -33,10 +33,10 @@ end
 --- > [!WARN]
 --- > **This makes use of the deprecated `setfenv`!**
 ---
-------
+------------
 ---@param func function The function to wrap
 ---@return thread coroutine The path coroutine from the files
-------
+------------
 ---@see sandbox.makeEnvironment
 function sandbox.makeProgramFunction(func)
     -- Load the program as a function with the custom environment
@@ -48,11 +48,11 @@ end
 ---
 ---The coroutine will be sandboxed inside a custom environment.
 ---
-------
+------------
 ---@param path path The absolute path read from
 ---@return thread coroutine The path coroutine from the files
 ---@throws If the file path could not be found.
-------
+------------
 ---@see sandbox.makeEnvironment
 function sandbox.makeProgramFile(path)
     -- Load the program as a function with the custom environment
