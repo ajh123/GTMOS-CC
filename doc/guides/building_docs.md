@@ -30,3 +30,8 @@ illuaminate doc-gen
 ```
 
 Once that was done you should have a `/out/doc` folder, containing a website of the documentation. Just open the `index.html` file in your favourite browser and you will see the documentation.
+
+## Credits
+
+> [!NOTE]
+> We would like to thank [SquidDev](https://github.com/SquidDev) and the [CC: Tweaked contributors]> >(https://github.com/cc-tweaked/CC-Tweaked/graphs/contributors) for provided illuaminate and CC: Tweaked documentation.
