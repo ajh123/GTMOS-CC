@@ -1,0 +1,29 @@
+function makeEnvironment()
+    -- Create a custom environment
+    return {
+        myVariable = 42,
+        myFunction = function(x)
+            return x * 2
+        end
+    }
+end
+
+function makeProgram(path)
+    -- Load the program as a function with the custom environment
+    local programFunction, errorString = loadfile(path, "bt", makeEnvironment())
+    if programFunction then
+        return programFunction
+    else
+        error("Error loading program file: " .. tostring(errorString))
+    end
+end
+
+function runProgram(programFunction)
+    if programFunction then
+        setfenv(programFunction, makeEnvironment())
+        local success, result = pcall(programFunction)  -- Run the loaded program
+        if not success then
+            print("Error running program: " .. tostring(result))
+        end
+    end
+end
