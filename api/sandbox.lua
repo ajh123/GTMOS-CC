@@ -33,7 +33,7 @@ end
 -- This environment can safely run potentially unsafe programs or allow programs to utilise
 -- custom GT MOS - CC APIs.
 --
--- @treturn table The virtual environment created.
+-- @treturn table ~ The virtual environment created.
 -- @since 0.1.0
 function sandbox.makeEnvironment()
     -- Create a custom environment
@@ -82,8 +82,8 @@ end
 -- > This makes use of the deprecated `setfenv`! This function *might*
 -- > not work in your environment.
 --
--- @tparam function func The function to wrap.
--- @treturn table A thread A coroutine from the function.
+-- @tparam function func ~ The function to wrap.
+-- @treturn table ~ A thread A coroutine from the function.
 -- @since 0.1.0
 -- @see sandbox.makeEnvironment
 function sandbox.makeProgramFunction(func)
@@ -96,8 +96,8 @@ end
 --
 -- The coroutine will be sandboxed inside a custom environment.
 --
--- @tparam string path The absolute path read from.
--- @treturn table A coroutine from the file.
+-- @tparam string path ~ The absolute path read from.
+-- @treturn table ~ A coroutine from the file.
 -- @throws If the file path could not be found.
 -- @since 0.1.0
 -- @see sandbox.makeEnvironment
