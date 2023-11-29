@@ -5,9 +5,11 @@ allowing controlled access to the GT MOS - CC APIs.
 Programs executed in this sandbox are contained within a custom environment to enhance safety.
 
 @module[module] sandbox
+@since 0.1.0
 ]]
 local sandbox = {}
 local virtual_env = require "api.virtual_env"
+local expect = require "cc.expect"
 
 -- from: https://stackoverflow.com/a/53992026
 function deepcopy(orig)
@@ -35,7 +37,41 @@ end
 -- @since 0.1.0
 function sandbox.makeEnvironment()
     -- Create a custom environment
-    return deepcopy(virtual_env)
+    env = deepcopy(virtual_env)
+    env._G = env
+    env.load = function (chnk, chunkname, mode, _env)
+        return load(chnk, chunkname, mode, _env)
+    end
+
+    env.loadfile = function(filename, mode, _env)
+        -- Support the previous `loadfile(filename, env)` form instead.
+        if type(mode) == "table" and _env == nil then
+            mode, _env = nil, mode
+        end
+
+        expect.expect(1, filename, "string")
+        expect.expect(2, mode, "string", "nil")
+        expect.expect(3, _env, "table", "nil")
+
+        local file = fs.open(filename, "r")
+        if not file then return nil, "File not found" end
+
+        local func, err = env.load(file.readAll(), "@/" .. fs.combine(filename), mode, _env)
+        file.close()
+        return func, err
+    end
+
+    env.dofile = function(_sFile)
+        expect.expect(1, _sFile, "string")
+
+        local fnFile, e = env.loadfile(_sFile, nil, env._G)
+        if fnFile then
+            return fnFile()
+        else
+            error(e, 2)
+        end
+    end
+    return env
 end
 
 --- Creates a coroutine from a function.

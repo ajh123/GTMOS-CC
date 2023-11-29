@@ -4,7 +4,11 @@ local sandbox = require "api.sandbox"
 local programFilePath = shell.resolve("programs/shell/main.lua")
 local func = sandbox.makeProgramFile(programFilePath)
 
-local success, result = coroutine.resume(func)
-if not success then
-    print("Error running program: " .. tostring(result))
+while coroutine.status(func) ~= "dead" do
+    local myEvent = { os.pullEvent() }
+
+    local ok, result = coroutine.resume(func, table.unpack(myEvent))
+    if not ok then
+        printError(result)
+    end
 end
