@@ -1,16 +1,17 @@
---[[- The sandbox API provides access to create programs in a sandbox and
-use the GT MOS APIs. 
+--[[-
+The sandbox module provides a safe environment for creating and running programs,
+allowing controlled access to the GT MOS APIs.
 
-Programs can be ran in a custom environment to ensure saftey.
+Programs executed in this sandbox are contained within a custom environment to enhance safety.
 
-@module[kind=program] sandbox
+@module[module] sandbox
 ]]
 local sandbox = {}
 
 --- Creates a custom environment.
 --
--- The environment can be used to safeley run potentialy unsafe programs,
--- or allow programs to use the custom GT MOS APIs.
+-- This environment can safely run potentially unsafe programs or allow programs to utilise
+-- custom GT MOS APIs.
 --
 -- @treturn table The virtual environment created.
 -- @since 0.1.0

@@ -19,8 +19,8 @@
   )
 
   (module-kinds
-    (guide Guides)
     (program Programs)
+    (guide Guides)
     (changelog Changelog)
   )
 
