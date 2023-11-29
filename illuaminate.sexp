@@ -12,7 +12,7 @@
 
   (site
     (title "GT MOS - CC")
-    (url https://docs.minersonline.uk/cc/gtmos)
+    (url https://ajh123.github.io/GTMOS-CC/)
     (source-link https://github.com/ajh123/GTMOS-CC/blob/${commit}/${path}#L${line})
 
     (head doc/head.html)
