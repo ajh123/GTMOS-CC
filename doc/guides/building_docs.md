@@ -2,36 +2,45 @@
 module: [kind=guide] building_docs
 ---
 
-# Building GT MOS - CC documentation
+# Building Documentation
 
-Building the GT MOS - CC documentation can be done in a few simple steps. Documentation is important for any project, it will allow users and developers understand it. For GT MOS - CC we have our own documentation.
+Effective documentation is crucial for any project, aiding both users and developers in understanding its intricacies. This guide outlines the straightforward steps to build the documentation for GT MOS - CC, complete with our own set of comprehensive documentation.
 
-## illuaminate downloads
+## Prerequisites: illuaminate Downloads
 
-To build the documentation you need to download [illuaminate](https://github.com/SquidDev/illuaminate), illuaminate is the tool we use to construct the documentation from Markdown and Lua files.
+Before proceeding, download [illuaminate](https://github.com/SquidDev/illuaminate), the tool we utilise to construct documentation from Markdown and Lua files. Choose the appropriate version for your platform:
 
-* x86-64 Linux - <https://squiddev.cc/illuaminate/bin/latest/illuaminate-linux-x86_64>
-* x86-64 Windows - <https://squiddev.cc/illuaminate/bin/latest/illuaminate-windows-x86_64.exe>
+- x86-64 Linux: [illuaminate-linux-x86_64](https://squiddev.cc/illuaminate/bin/latest/illuaminate-linux-x86_64)
+- x86-64 Windows: [illuaminate-windows-x86_64.exe](https://squiddev.cc/illuaminate/bin/latest/illuaminate-windows-x86_64.exe)
 
-Or you may view [illuaminate's source code](https://github.com/SquidDev/illuaminate) and compile it yourself.
+Alternatively, you can access [illuaminate's source code](https://github.com/SquidDev/illuaminate) and compile it yourself.
 
-## Building the docs
+## Building the Docs
 
-To build the docs you need to download the [GT MOS - CC repository](https://github.com/ajh123/GTMOS-CC) with git:
+1. Clone the [GT MOS - CC repository](https://github.com/ajh123/GTMOS-CC) using Git:
 
-```bash
-git clone https://github.com/ajh123/GTMOS-CC.git
-```
+    ```bash
+    git clone https://github.com/ajh123/GTMOS-CC.git
+    ```
 
-Once you have the code you may use illuaminate to build the docs. Just navigate to the folder where the code was placed and run:
+2. Navigate to the code directory and execute the following command to use illuaminate for documentation generation:
 
-```bash
-illuaminate doc-gen
-```
+    ```bash
+    cd GTMOS-CC
+    illuaminate doc-gen
+    ```
 
-Once that was done you should have a `/out/doc` folder, containing a website of the documentation. Just open the `index.html` file in your favourite browser and you will see the documentation.
+3. After completion, you'll find the generated documentation in the `/out/doc` folder. To view the documentation, open the `index.html` file in your preferred browser:
+
+    ```bash
+    cd out/doc
+    xdg-open index.html  # For Linux
+    start index.html     # For Windows
+    ```
+
+Bookmark the documentation URL for convenient future access.
 
 ## Credits
 
 > [!NOTE]
-> We would like to thank [SquidDev](https://github.com/SquidDev) and the [CC: Tweaked contributors]> >(https://github.com/cc-tweaked/CC-Tweaked/graphs/contributors) for provided illuaminate and CC: Tweaked documentation.
+> Our sincere thanks goes to [SquidDev](https://github.com/SquidDev) and the [CC: Tweaked contributors](https://github.com/cc-tweaked/CC-Tweaked/graphs/contributors) for their contributions to illuaminate and the CC: Tweaked documentation, which helped us understand illuaminate.
