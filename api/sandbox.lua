@@ -1,28 +1,41 @@
 --[[-
 The sandbox module provides a safe environment for creating and running programs,
-allowing controlled access to the GT MOS APIs.
+allowing controlled access to the GT MOS - CC APIs.
 
 Programs executed in this sandbox are contained within a custom environment to enhance safety.
 
 @module[module] sandbox
 ]]
 local sandbox = {}
+local virtual_env = require "api.virtual_env"
+
+-- from: https://stackoverflow.com/a/53992026
+function deepcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[deepcopy(orig_key)] = deepcopy(orig_value)
+        end
+        setmetatable(copy, deepcopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
 
 --- Creates a custom environment.
 --
 -- This environment can safely run potentially unsafe programs or allow programs to utilise
--- custom GT MOS APIs.
+-- custom GT MOS - CC APIs.
 --
 -- @treturn table The virtual environment created.
 -- @since 0.1.0
 function sandbox.makeEnvironment()
     -- Create a custom environment
-    return {
-        myVariable = 42,
-        myFunction = function(x)
-            return x * 2
-        end,
-    }
+    return deepcopy(virtual_env)
 end
 
 --- Creates a coroutine from a function.
