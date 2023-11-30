@@ -15,8 +15,18 @@ end
 
 local customPaths = {
     {
-        dest = "/rom/programs/",
-        src = "programs",
+        dest = "/rom/",
+        src = "rom",
+        readOnly = true
+    },
+    {
+        dest = "/rom/apis/io.lua",
+        src = "/rom/apis/io.lua",
+        readOnly = true
+    },
+    {
+        dest = "/rom/apis/fs.lua",
+        src = "/rom/apis/fs.lua",
         readOnly = true
     }
 }
@@ -132,6 +142,7 @@ virtual_fs.open = function (path, mode)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
             local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            print(newPath)
             return fs.open(newPath, mode)
         end
     end
