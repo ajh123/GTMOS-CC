@@ -83,7 +83,7 @@ end
 -- > not work in your environment.
 --
 -- @tparam function func ~ The function to wrap.
--- @treturn table ~ A thread A coroutine from the function.
+-- @treturn table ~ A thread (a coroutine) from the function.
 -- @since 0.1.0
 -- @see sandbox.makeEnvironment
 function sandbox.makeProgramFunction(func)
@@ -96,9 +96,9 @@ end
 --
 -- The coroutine will be sandboxed inside a custom environment.
 --
--- @tparam string path ~ The absolute path read from.
+-- @tparam string path ~ The absolute path to read from.
 -- @treturn table ~ A coroutine from the file.
--- @throws If the file path could not be found.
+-- @throws If the file at the path could not be found.
 -- @since 0.1.0
 -- @see sandbox.makeEnvironment
 function sandbox.makeProgramFile(path)
