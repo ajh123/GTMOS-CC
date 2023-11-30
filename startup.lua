@@ -1,7 +1,6 @@
 local sandbox = require "api.sandbox"
 
--- Your Lua program file
-local programFilePath = shell.resolve("rom/programs/shell.lua")
+local programFilePath = shell.resolve("rom/bios.lua")
 local func = sandbox.makeProgramFile(programFilePath)
 
 while coroutine.status(func) ~= "dead" do
