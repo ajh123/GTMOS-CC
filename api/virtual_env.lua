@@ -54,6 +54,10 @@ virtual_env.getmetatable = getmetatable
 virtual_env.pcall = pcall
 
 virtual_env.io = io
+
+---
+-- The GT MOS - CC [`virtual_fs`] is accessiable via the `fs` global variable inside sandboxed programs.
+-- @since 0.1.0
 virtual_env.fs = virtual_fs
 virtual_env.table = table
 

@@ -1,6 +1,8 @@
 --[[-
 The virtual_fs module provides a virtual filesystem for the GT MOS - CC environment.
 
+This is designed to be comptabile with the standard ComputerCraft filesystem libaray (`fs`).
+
 @module[module] virtual_fs
 @since 0.1.0
 ]]
