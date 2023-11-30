@@ -6,6 +6,8 @@ The virtual_env module provides the definitions for the GT MOS - CC environment.
 ]]
 local virtual_env = {}
 
+local virtual_fs = require "api.virtual_fs"
+
 --- Prints a message to the console.
 --
 -- This is the GT MOS - CC speficic version of [`print`](https://www.lua.org/manual/5.1/manual.html#pdf-print), it behaves excatly like the Lua bulitin [`print`](https://www.lua.org/manual/5.1/manual.html#pdf-print).
@@ -52,6 +54,7 @@ virtual_env.getmetatable = getmetatable
 virtual_env.pcall = pcall
 
 virtual_env.io = io
+virtual_env.fs = virtual_fs
 virtual_env.table = table
 
 return virtual_env

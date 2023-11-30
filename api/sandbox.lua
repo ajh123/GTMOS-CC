@@ -53,10 +53,10 @@ function sandbox.makeEnvironment()
         expect.expect(2, mode, "string", "nil")
         expect.expect(3, _env, "table", "nil")
 
-        local file = fs.open(filename, "r")
+        local file = env.fs.open(filename, "r")
         if not file then return nil, "File not found" end
 
-        local func, err = env.load(file.readAll(), "@/" .. fs.combine(filename), mode, _env)
+        local func, err = env.load(file.readAll(), "@/" .. env.fs.combine(filename), mode, _env)
         file.close()
         return func, err
     end
