@@ -15,8 +15,8 @@ end
 
 local customPaths = {
     {
-        dest = "/rom/",
-        src = "rom",
+        dest = "/rom/programs/",
+        src = "rom/programs/",
         readOnly = true
     },
     {
@@ -34,7 +34,7 @@ local customPaths = {
 virtual_fs.list = function (path)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.list(newPath)
         end
     end
@@ -51,7 +51,7 @@ virtual_fs.getDir = fs.getDir
 virtual_fs.getSize = function (path)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.exists(newPath)
         end
     end
@@ -61,7 +61,7 @@ end
 virtual_fs.exists = function (path)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[1].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.exists(newPath)
         end
     end
@@ -71,7 +71,7 @@ end
 virtual_fs.isDir = function (path)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.isDir(newPath)
         end
     end
@@ -141,8 +141,7 @@ end
 virtual_fs.open = function (path, mode)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
-            print(newPath)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.open(newPath, mode)
         end
     end
@@ -155,7 +154,7 @@ virtual_fs.getDrive = function (path)
     end
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.getDrive("/env/"+newPath)
         end
     end
@@ -165,7 +164,7 @@ end
 virtual_fs.getFreeSpace = function (path)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.getFreeSpace("/env/"+newPath)
         end
     end
@@ -178,7 +177,7 @@ virtual_fs.getCapacity = function (path)
             if customPaths[k].readOnly then
                 return nil
             end
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.getCapacity(newPath)
         end
     end
@@ -188,7 +187,7 @@ end
 virtual_fs.attributes = function (path)
     for k, _ in pairs(customPaths) do
         if string.starts(path, customPaths[k].dest) then
-            local newPath = "/"..shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
+            local newPath = shell.resolve(customPaths[k].src).."/"..string.gsub(path, customPaths[k].dest, "", 1)
             return fs.attributes("/env/"+newPath)
         end
     end
