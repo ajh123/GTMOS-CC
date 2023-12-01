@@ -15,7 +15,6 @@ end
 local function executeLuaScript(filename)
     local newName = cwd.."/"..filename
     newName = string.gsub(newName, "//", "/")
-    print(newName)
     local func, err = loadfile(newName)
     if not err then
         local status, err2 = pcall(func)
@@ -42,10 +41,12 @@ while true do
         print("Shell exiting...")
         break
     elseif args[1] == "cd" then
-        print(cwd)
-        local nd = cwd.."/"..args[2] or cwd
-        print(nd)
-        cwd = string.gsub(nd, "//", "/")
+        if args[2] ~= nil then
+            local nd = cwd.."/"..args[2]
+
+            cwd = string.gsub(nd, "//", "/")
+            cwd = string.gsub(cwd, "//", "/") 
+        end
     else
         -- Porgrams are allways Lua
         local scriptFilename = args[1]
