@@ -60,5 +60,6 @@ virtual_env.io = io
 -- @since 0.1.0
 virtual_env.fs = virtual_fs
 virtual_env.table = table
+virtual_env.string = string
 
 return virtual_env

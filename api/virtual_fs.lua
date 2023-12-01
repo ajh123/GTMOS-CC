@@ -15,17 +15,17 @@ end
 
 local customPaths = {
     {
-        dest = "/rom/programs/",
+        dest = "/usr/bin/",
         src = "rom/programs/",
         readOnly = true
     },
     {
-        dest = "/rom/apis/io.lua",
+        dest = "/usr/lib/io.lua",
         src = "/rom/apis/io.lua",
         readOnly = true
     },
     {
-        dest = "/rom/apis/fs.lua",
+        dest = "/usr/lib/fs.lua",
         src = "/rom/apis/fs.lua",
         readOnly = true
     }
